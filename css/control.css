@@ -1,0 +1,104 @@
+/* ===== Kontrol melayang kanan-atas: sakelar bahasa + mode gelap ===== */
+.site-controls{position:fixed;top:20px;right:20px;z-index:1002;display:flex;align-items:center;gap:6px;padding:5px;border-radius:100px;
+  background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.06);box-shadow:0 10px 40px rgba(0,0,0,.12);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .3s,border-color .3s}
+.ctl-sep{width:1px;height:20px;background:rgba(0,0,0,.1)}
+
+.lang-switch{position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:100px}
+.lang-thumb{position:absolute;top:0;left:0;width:50%;height:100%;border-radius:100px;pointer-events:none;
+  background:var(--lime,#C5E945);box-shadow:0 4px 12px rgba(197,233,69,.45);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.lang-switch[data-active="en"] .lang-thumb{transform:translateX(100%)}
+.lang-switch button{position:relative;z-index:1;min-width:44px;height:36px;padding:0 12px;border:0;border-radius:100px;background:none;cursor:pointer;
+  font:600 .78rem 'Space Grotesk',sans-serif;letter-spacing:.06em;color:#4B5563;transition:color .25s}
+.lang-switch button.on{color:#111827}
+
+.theme-btn{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:50%;background:none;cursor:pointer;color:#4B5563;
+  transition:background .2s,color .2s}
+.theme-btn:hover{background:#F3F4F6;color:#111827}
+.theme-btn svg{grid-area:1/1;width:18px;height:18px;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .3s}
+.theme-btn .i-sun{opacity:0;transform:rotate(-90deg) scale(.5)}
+html[data-theme="dark"] .theme-btn .i-sun{opacity:1;transform:none}
+html[data-theme="dark"] .theme-btn .i-moon{opacity:0;transform:rotate(90deg) scale(.5)}
+
+@media(max-width:640px){.site-controls{top:12px;right:12px}.lang-switch button{min-width:40px;height:34px;padding:0 10px}.theme-btn{width:34px;height:34px}}
+
+/* transisi halus hanya saat tombol tema ditekan */
+html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:background-color .35s,color .35s,border-color .35s,box-shadow .35s !important}
+
+/* ===== MODE GELAP ===== */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg-color:#0B1120;--text-primary:#F3F4F6;--text-secondary:#A1A9B8;--accent-color:#60A5FA;--blue:#60A5FA;
+  --border-color:rgba(255,255,255,.1);--surface:#131B2E;--surface-2:#1B2540;
+}
+html[data-theme="dark"] .site-controls{background:rgba(19,27,46,.92);border-color:rgba(255,255,255,.08);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+html[data-theme="dark"] .ctl-sep{background:rgba(255,255,255,.12)}
+html[data-theme="dark"] .lang-switch button{color:#A1A9B8}
+html[data-theme="dark"] .lang-switch button.on{color:#111827}
+html[data-theme="dark"] .theme-btn{color:#A1A9B8}
+html[data-theme="dark"] .theme-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* navbar bawah */
+html[data-theme="dark"] .floating-nav{background-color:rgba(19,27,46,.92);border-color:rgba(255,255,255,.08);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+html[data-theme="dark"] .floating-nav a{color:#A1A9B8}
+html[data-theme="dark"] .floating-nav a:hover{background-color:rgba(255,255,255,.1);color:#fff}
+html[data-theme="dark"] .floating-nav a.active{background-color:#C5E945;color:#111827}
+
+/* kartu */
+html[data-theme="dark"] .exp-card,html[data-theme="dark"] .activity-card,html[data-theme="dark"] .case-card{background-color:var(--surface);border-color:var(--border-color)}
+html[data-theme="dark"] .exp-tags span,html[data-theme="dark"] .chip{background-color:var(--surface-2);color:#C7CEDB}
+html[data-theme="dark"] .exp-logo,html[data-theme="dark"] .activity-img{background-color:var(--surface-2)}
+html[data-theme="dark"] .exp-card:hover,html[data-theme="dark"] .activity-card:hover,html[data-theme="dark"] .case-card:hover{box-shadow:0 20px 40px rgba(0,0,0,.4)}
+
+/* project */
+html[data-theme="dark"] .card-1 .case-visual{background:#1E2A12 !important}
+html[data-theme="dark"] .card-2 .case-visual{background:#13233F !important}
+html[data-theme="dark"] .card-3 .case-visual{background:#10302B !important}
+html[data-theme="dark"] .card-4 .case-visual{background:#232A38 !important}
+html[data-theme="dark"] .case-btn{background-color:var(--surface-2);color:#fff}
+html[data-theme="dark"] .case-btn:hover{background-color:#C5E945;color:#111827}
+
+/* contact */
+html[data-theme="dark"] .btn-lets-talk:hover{background-color:#fff;color:#111827}
+html[data-theme="dark"] .pill-tag:hover{background-color:#fff;color:#111827}
+
+
+/* ===== Judul contact (menggantikan h2 agar animasi ketik mengikuti bahasa) ===== */
+.contact-hero-content .contact-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3rem;line-height:1.15;
+  color:var(--text-primary);margin-bottom:20px;letter-spacing:-1px;min-height:2.3em}
+.contact-hero-content .contact-title::after{content:'|';color:var(--accent-color);margin-left:4px;animation:blinkCursor .8s step-end infinite}
+@media(max-width:768px){.contact-hero-content .contact-title{font-size:2.2rem;min-height:3.5em}}
+
+/* ===== Corak latar: titik-titik + cahaya warna lembut (terang & gelap) ===== */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 10% 6%,rgba(197,233,69,.28),transparent 36%),
+    radial-gradient(circle at 94% 40%,rgba(37,99,235,.12),transparent 38%),
+    radial-gradient(circle at 18% 92%,rgba(45,212,191,.16),transparent 38%),
+    radial-gradient(rgba(17,24,39,.14) 1.3px,transparent 1.5px);
+  background-size:auto,auto,auto,26px 26px}
+html[data-theme="dark"] body::before{
+  background-image:
+    radial-gradient(circle at 10% 6%,rgba(197,233,69,.10),transparent 36%),
+    radial-gradient(circle at 94% 40%,rgba(96,165,250,.16),transparent 38%),
+    radial-gradient(circle at 18% 92%,rgba(45,212,191,.10),transparent 38%),
+    radial-gradient(rgba(255,255,255,.10) 1.3px,transparent 1.5px)}
+
+/* ===== MODE GELAP: halaman detail project =====
+   Hanya mengubah WARNA (tidak menyentuh ukuran/tata letak), jadi aman di atas CSS halaman project-mu. */
+html[data-theme="dark"] .case-study-hero h1{color:var(--text-primary)}
+html[data-theme="dark"] .case-study-hero p{color:var(--text-secondary)}
+html[data-theme="dark"] .laptop-frame{border-color:rgba(255,255,255,.14);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+html[data-theme="dark"] .laptop-screen{background-color:var(--surface-2)}
+html[data-theme="dark"] .product-context-box{background-color:var(--surface);border-color:var(--border-color);color:var(--text-primary)}
+html[data-theme="dark"] .product-context-box h2,
+html[data-theme="dark"] .product-context-box h3,
+html[data-theme="dark"] .product-context-box h4,
+html[data-theme="dark"] .product-context-box strong{color:var(--text-primary)}
+html[data-theme="dark"] .product-context-box p,
+html[data-theme="dark"] .product-context-box li,
+html[data-theme="dark"] .product-context-box em{color:var(--text-secondary)}
+html[data-theme="dark"] .context-title{color:var(--accent-color)}
+html[data-theme="dark"] .tech-tags .tag{background-color:var(--surface-2);color:#C7CEDB;border-color:var(--border-color)}
+html[data-theme="dark"] .btn-github{background-color:#C5E945;color:#111827;border-color:transparent}
+html[data-theme="dark"] .btn-github:hover{background-color:#fff;color:#111827}

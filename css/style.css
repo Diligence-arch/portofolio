@@ -1,0 +1,914 @@
+/* 1. IMPORT FONT PREMIUM (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --bg-color: #FAFAFA;        /* Latar belakang putih bersih sedikit abu agar tidak menyilaukan */
+  --text-primary: #111827;    /* Warna teks utama (abu-abu sangat gelap, lebih lembut dari hitam murni) */
+  --text-secondary: #4B5563;  /* Warna teks deskripsi (abu-abu sedang) */
+  --accent-color: #2563EB;    /* Warna biru profesional untuk tombol dan link */
+  --border-color: rgba(0, 0, 0, 0.1); /* Garis pembatas tipis berwarna abu-abu terang */
+}
+
+/* 3. RESET CSS & PENGATURAN DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Membuat efek scroll yang mulus saat menu navigasi diklik */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Membuat teks terlihat lebih tajam di layar */
+}
+
+/* 4. TIPOGRAFI UNTUK JUDUL */
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif; /* Font khusus yang modern untuk judul */
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+/* 5. PEMBUNGKUS UTAMA (Container) & SPASI KONTEN */
+main {
+  max-width: 1000px; /* Lebar maksimal website agar tidak terlalu melebar di monitor besar */
+  margin: 0 auto;    /* Membuat konten selalu berada di tengah */
+  padding: 0 32px;   /* Jarak aman di sisi kiri dan kanan untuk layar HP */
+}
+
+/* Jarak antar section (Experience, Activities, dll) */
+section {
+  padding: 120px 0; /* Memberikan ruang kosong (whitespace) yang luas agar desain terlihat mahal */
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Menghilangkan garis pembatas di section paling bawah */
+section:last-of-type {
+  border-bottom: none;
+}
+
+/* 6. LINK UMUM */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* 7. FLOATING BOTTOM NAVBAR */
+.floating-nav {
+  position: fixed;
+  bottom: 40px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 8px; /* Memberikan ruang sedikit di dalam kapsul putih */
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Jarak antar teks menu */
+  border-radius: 100px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  width: max-content;
+}
+
+.floating-nav a {
+  color: #4B5563; /* Teks abu-abu kalem */
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 100px;
+  text-transform: capitalize; /* Huruf awal besar */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efek menu yang sedang aktif (otomatis berpindah saat di-scroll) */
+.floating-nav a.active {
+  background-color: #C9F36B; /* Warna hijau estetik dari referensi Anda */
+  color: #111827;            /* Teks menjadi gelap agar mudah dibaca */
+  font-weight: 600;          /* Teks sedikit ditebalkan */
+  border-radius: 100px;
+}
+
+/* Saat disentuh mouse */
+.floating-nav a:hover {
+  color: #111827;
+  background-color: #F3F4F6;
+}
+
+/* Menu yang sedang aktif (Hijau pastel ala referensi Wisnu Ary) */
+.floating-nav a.active {
+  background-color: #E8F5A2; /* Hijau pastel lembut */
+  color: #111827;
+  font-weight: 600;
+}
+
+
+/* 11. EXPERIENCE GRID & CARDS */
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Jarak vertikal antar kartu */
+}
+
+.exp-card {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* Membagi kartu menjadi 2 kolom (Kiri: Tanggal, Kanan: Konten) */
+  gap: 32px;
+  padding: 40px;
+  background-color: #ffffff; /* Latar belakang kartu putih bersih */
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); /* Efek bayangan lembut saat di-hover */
+}
+
+.exp-date {
+  color: var(--text-secondary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exp-content h3 {
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.exp-content h4 {
+  font-size: 1rem;
+  color: var(--accent-color); /* Menggunakan warna biru aksen */
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.exp-content p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exp-tags span {
+  background-color: #F3F4F6; /* Warna abu-abu sangat terang untuk tag */
+  color: #4B5563;
+  padding: 6px 16px;
+  border-radius: 100px; /* Membuat tag berbentuk pil */
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+/* Pengaturan Kolom Kiri (Gambar & Tanggal) */
+.exp-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Jarak antara gambar dan teks tanggal */
+  align-items: flex-start; /* Memastikan foto tetap rapi di sebelah kiri */
+}
+
+/* Pengaturan Ukuran Gambar/Foto Experience */
+.exp-logo {
+  width: 200px;  /* Diperbesar agar foto terlihat jelas */
+  height: 200px; /* Tinggi disamakan agar berbentuk persegi presisi */
+  object-fit: cover; /* Foto akan mengisi penuh area tanpa menyisakan kotak abu-abu */
+  border-radius: 12px; /* Sudut dibuat sedikit lebih membulat */
+  background-color: #F3F4F6;
+  padding: 0; /* Padding dihapus agar foto tidak mengecil ke dalam */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Mengatur kehalusan animasi */
+}
+
+/* Efek Animasi saat kursor menyentuh foto */
+.exp-logo:hover {
+  transform: scale(1.08) translateY(-5px); /* Foto sedikit membesar (zoom-in) dan melayang ke atas */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); /* Bayangan menjadi lebih tajam saat melayang */
+}
+
+/* TAMPILAN UNTUK LAYAR HP (Responsif) */
+@media (max-width: 768px) {
+  .exp-card {
+    grid-template-columns: 1fr; /* Mengubah menjadi 1 kolom yang tersusun ke bawah */
+    padding: 28px;
+    gap: 16px;
+  }
+}
+
+/* 12. INFINITE CAROUSEL (MARQUEE) */
+.carousel-container {
+  overflow: hidden; /* Menyembunyikan elemen yang keluar dari batas layar */
+  width: 100vw; /* Lebar ditarik penuh hingga ujung layar */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 40px 0; /* Ruang atas dan bawah agar bayangan kartu tidak terpotong */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 32px; /* Jarak antar kartu */
+  width: max-content; /* Membiarkan lebar memanjang sesuai jumlah kartu */
+  animation: scrollMarquee 35s linear infinite; /* Animasi berputar terus-menerus */
+}
+
+/* Membuat carousel berhenti saat mouse diarahkan ke kartu (opsional, UX yang baik) */
+.carousel-track:hover {
+  animation-play-state: paused; 
+}
+
+.activity-card {
+  flex: 0 0 auto; /* Mencegah kartu mengecil */
+  width: 320px; /* Ukuran lebar tetap untuk setiap kartu */
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+}
+
+.activity-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #F3F4F6;
+}
+
+.activity-content h3 {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.activity-content p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Frame Animasi Pergerakan CSS */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Menggeser persis 50% dari total panjang track ditambah jarak (gap) agar loop mulus */
+    transform: translateX(calc(-50% - 16px)); 
+  }
+}
+
+/* 13. CASE STUDIES GRID (Gaya Devashish) */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.case-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 32px; /* Membuat sudut kartu sangat melengkung khas portofolio high-end */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* Kotak Visual di Atas Kartu */
+.case-visual {
+  position: relative;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Tombol "Read now" melayang di pojok visual */
+.case-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background-color: #ffffff;
+  color: #111827;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.case-btn:hover {
+  background-color: #111827;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Modifikasi CSS Anda yang ada di bagian /* Mockup HP di dalam kartu */
+.phone-group {
+  perspective: 1000px; /* Menambahkan perspektif 3D */
+}
+
+.phone-mock {
+  /* ... kode lama Anda ... */
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+/* HP akan sedikit miring dan maju saat di-hover, memberi efek 3D */
+.case-card:hover .phone-mock:nth-child(2) {
+  transform: translateY(-15px) scale(1.05) rotateX(5deg);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+}
+.case-card:hover .phone-mock:nth-child(1) {
+  transform: translateY(-8px) translateX(-5px) rotateY(-10deg);
+}
+.case-card:hover .phone-mock:nth-child(3) {
+  transform: translateY(-8px) translateX(5px) rotateY(10deg);
+}
+
+/* Mockup HP di dalam kartu */
+.phone-group {
+  display: flex;
+  align-items: flex-end;
+  gap: -12px;
+  transform: translateY(20px);
+}
+
+.phone-mock {
+  width: 105px;
+  height: 210px;
+  border-radius: 16px;
+  background: #111827;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  margin: 0 -10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.phone-mock::before {
+  content: "";
+  position: absolute;
+  top: 10px; left: 50%; transform: translateX(-50%);
+  width: 36px; height: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.phone-mock::after {
+  content: "";
+  position: absolute;
+  top: 24px; left: 6px; right: 6px; bottom: 8px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff;
+}
+
+/* Bagian Teks Keterangan di Bawah */
+.case-info {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.case-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.case-info h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.case-info p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 4px 12px;
+  background-color: #F3F4F6;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Aturan dasar layar mockup HP */
+.phone-mock::after {
+  content: "";
+  position: absolute;
+  top: 24px; 
+  left: 6px; 
+  right: 6px; 
+  bottom: 8px;
+  border-radius: 6px;
+  background-size: 300px 100%; /* Lebar dan tinggi tampilan gambar di dalam HP */
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+/* Pembagian posisi gambar agar tersebar otomatis di beberapa HP */
+.phone-group .phone-mock:nth-child(1)::after { background-position: left center; }
+.phone-group .phone-mock:nth-child(2)::after { background-position: center center; }
+.phone-group .phone-mock:nth-child(3)::after { background-position: right center; }
+
+/* Menghubungkan file gambar ke masing-masing Proyek */
+.card-1 .phone-mock::after {
+  background-image: url("../Assets/Images/XpolreMid.png"); /* Ganti dengan gambar Proyek 1 */
+}
+
+.card-2 .phone-mock::after {
+  background-image: url("../Assets/Images/Project-UMKM.png"); /* Ganti dengan gambar Proyek 2 */
+}
+
+.card-3 .phone-mock::after {
+  background-image: url("../Assets/Images/warkopweb.png"); /* Ganti dengan gambar Proyek 3 */
+}
+
+.card-4 .phone-mock::after {
+  background-image: url("../Assets/Images/portov2.png"); /* Ganti dengan gambar Proyek 4 */
+}
+
+/* 14. CONTACT SECTION (Gaya Omid Rad) */
+/* Efek kursor berkedip setelah teks */
+.contact-hero-content h2::after {
+  content: '|';
+  color: var(--accent-color);
+  margin-left: 4px;
+  animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.contact-section-omid {
+  padding: 100px 0 60px 0 !important;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none !important;
+}
+
+.contact-hero-content {
+  max-width: 850px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.contact-hero-content h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.contact-hero-content p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+/* Tombol LET'S TALK */
+.cta-wrapper {
+  display: inline-block;
+}
+
+.btn-lets-talk {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #a8cd23;
+  color: #ffffff;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn-lets-talk:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  color: #ffffff;
+}
+
+.btn-lets-talk .arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-lets-talk:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Sebaran Pill Tag / Chip Keahlian di Bawah */
+.skills-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.pill-tag {
+  background-color: #a8cd23;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.pill-tag:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  background-color: var(--accent-color);
+}
+
+/* Bagian Bawah Footer (Copyright & Menu kecil) */
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+/* Responsif untuk Layar HP */
+@media (max-width: 768px) {
+  .contact-hero-content h2 {
+    font-size: 2.2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolled iframe {
+  pointer-events: none;
+}
+
+/* ==========================================
+   PAGE TRANSITION OVERLAY (Opsi A: Tirai)
+   ========================================= */
+.page-transition-overlay {
+  position: fixed;
+  top: 100%; /* Bersembunyi di bawah layar secara default */
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #C5E945; /* Warna latar belakang tirai (bisa disesuaikan) */
+  z-index: 9999; /* Pastikan berada di atas segalanya */
+  transition: top 0.6s cubic-bezier(0.85, 0, 0.15, 1); /* Kehalusan gerakan tirai */
+}
+
+/* Kondisi saat tirai menutup layar */
+.page-transition-overlay.active {
+  top: 0; 
+}
+
+/* Kondisi saat tirai tersapu ke atas meninggalkan layar */
+.page-transition-overlay.exit {
+  top: -100%; 
+}
+
+
+/* ==========================================
+   GAYA HALAMAN STUDI KASUS (DESKTOP MOCKUP)
+   ========================================= */
+
+.project-header {
+  padding: 30px 40px;
+}
+
+.btn-back {
+  text-decoration: none;
+  font-weight: 500;
+  color: #111827;
+  background: #f3f4f6;
+  padding: 10px 20px;
+  border-radius: 100px;
+  transition: background 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #d1d5db;
+}
+
+.case-study-hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto 30px auto;
+  padding: 0 20px;
+}
+
+.case-study-hero h1 {
+  font-size: 44px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.case-study-hero p {
+  font-size: 18px;
+  color: #4b5563;
+}
+
+/* Bingkai Layar Laptop (Browser Mockup) */
+.laptop-mockup-container {
+  max-width: 1000px;
+  margin: 30px auto 60px auto;
+  padding: 0 20px;
+}
+
+.laptop-frame {
+  background: #1f2937;
+  padding: 12px 12px 0 12px;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.laptop-screen {
+  background: #ffffff;
+  height: 500px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.laptop-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Kotak Product Context (Gaya Kartu Kuning/Krem Halus) */
+.product-context-box {
+  background: #fffbeb; 
+  border: 1px solid #fef3c7;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.context-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.product-context-box h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.product-context-box p {
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Bagian Project Overview */
+.project-overview-section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px 80px 20px;
+}
+
+.project-overview-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px;
+}
+
+.overview-block {
+  margin-bottom: 35px;
+}
+
+.project-overview-section h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.project-overview-section p {
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Tech Tags / Lencana Teknologi */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* List Fitur Utama */
+.feature-list {
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.feature-list li {
+  margin-bottom: 8px;
+}
+
+/* Tombol Aksi */
+.project-actions {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.btn-github {
+  display: inline-block;
+  background: #111827;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-github:hover {
+  opacity: 0.9;
+}
+
+.btn-demo {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #111827;
+  padding: 12px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  transition: background 0.2s ease;
+}
+
+.btn-demo:hover {
+  background: #e5e7eb;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+  .case-study-hero h1 {
+    font-size: 32px;
+  }
+  .laptop-screen {
+    height: 250px;
+  }
+  .product-context-box {
+    padding: 24px;
+  }
+}

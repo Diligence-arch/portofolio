@@ -1,0 +1,39 @@
+/* ===== Tema warna terpadu (muat PALING AKHIR, setelah style.css & hero.css) =====
+   Aturan palet:
+   - Navy  #111827 : teks utama, bayangan hero, hover gelap
+   - Limau #C5E945 : semua tombol & blok isian (selalu dengan teks navy agar kontras)
+   - Biru  #2563EB : label & link teks
+   Ubah warna aksen cukup di blok :root ini. */
+:root{
+  --ink:#111827;
+  --lime:#C5E945;
+  --lime-deep:#A8CD23;
+  --lime-soft:rgba(197,233,69,.45);
+  --blue:#2563EB;
+  --accent-color:#2563EB;
+}
+
+/* navbar melayang: hover & aktif memakai keluarga limau yang sama */
+.floating-nav a:hover{background-color:var(--lime-soft);color:var(--ink)}
+.floating-nav a.active{background-color:var(--lime);color:var(--ink);box-shadow:0 4px 12px rgba(197,233,69,.35)}
+
+/* kartu project: pastel disamakan dengan palet (limau, biru, teal, abu) */
+.card-1 .case-visual{background:#F1FADB !important}
+.card-2 .case-visual{background:#DBEAFE !important}
+.card-3 .case-visual{background:#D9F6EE !important}
+.card-4 .case-visual{background:#E5E7EB !important}
+
+/* contact: tombol & pill limau dengan teks navy (sebelumnya putih di atas limau = sulit dibaca) */
+.btn-lets-talk,.pill-tag{background-color:var(--lime);color:var(--ink)}
+.btn-lets-talk:hover{background-color:var(--ink);color:#fff}
+.pill-tag:hover{background-color:var(--ink);color:var(--lime)}
+
+/* hero: tombol utama limau, bayangan memakai navy yang sama */
+.hbtn.primary{background:var(--lime);color:var(--ink);box-shadow:0 10px 30px -10px rgba(197,233,69,.7)}
+.hbtn.primary:hover{background:#fff}
+.hero-eyebrow i{background:var(--lime)}
+.hero-shade{background:linear-gradient(90deg,rgba(17,24,39,.66) 0%,rgba(17,24,39,.3) 42%,transparent 65%),
+                      linear-gradient(to top,rgba(17,24,39,.38),transparent 30%)}
+@media(max-width:820px){
+  section#hero{background:var(--ink)}
+  .hero-shade{background:linear-gradient(to bottom,transparent 0,transparent 28svh,var(--ink) 58svh)}}
